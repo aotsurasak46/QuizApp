@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/utils/config.dart';
 import 'package:flutter_application_1/widgets/question_summary/question_identifier.dart';
 
 class SummaryItem extends StatelessWidget {
@@ -78,10 +79,10 @@ class SummaryItem extends StatelessWidget {
                   Text(
                     "Score : ${isCorrectAnswer ? itemData['score'] : 0} ",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "prompt",
                       fontSize: 14,
-                      color: Colors.brown.shade400,
+                      color: Config.earthYellowColor,
                     ),
                   )
                 ],

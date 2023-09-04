@@ -42,7 +42,7 @@ class Config {
       borderSide: BorderSide(
         color: Colors.greenAccent,
       ));
-      
+
   static const errorBorder = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(
@@ -56,4 +56,9 @@ class Config {
   static const accentColor2 = Color(0xFFD2ACFF);
   static const baseColor = Color(0xFFFEFEFE);
   static const darkerToneColor = Color(0xFF0F1B2D);
+  static const bitterSweetColor = Color(0xFFEF6461);
+  static const earthYellowColor = Color(0xFFE4B363);
+  static const antiFlashWhiteColor = Color(0xFFE8E9EB);
+  static const alabasterColor = Color(0xFFE0DFD5);
+  static const onyxColor = Color(0xFF313638);
 }

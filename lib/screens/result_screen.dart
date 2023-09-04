@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data/question.dart';
+import 'package:flutter_application_1/utils/config.dart';
 import 'package:flutter_application_1/widgets/question_summary/question_summary.dart';
 
 class ResultScreen extends StatelessWidget {
@@ -50,60 +51,74 @@ class ResultScreen extends StatelessWidget {
       },
     );
 
-    return SizedBox(
-      width: double.infinity,
-      child: Container(
-        margin: const EdgeInsets.all(30),
-        height: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            const SizedBox(
-              height: 40,
-            ),
-            Column(children: [
+    return Container(
+      color: Config.alabasterColor,
+      child: SizedBox(
+        width: double.infinity,
+        child: Container(
+          margin: const EdgeInsets.all(30),
+          height: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const SizedBox(
+                height: 40,
+              ),
+              Column(children: [
+                const Text(
+                  "คุณตอบถูกทั้งหมด",
+                  textAlign: TextAlign.center,
+                  softWrap: true,
+                  style: TextStyle(
+                    fontFamily: "prompt",
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "$numCorrectQuestions ข้อจาก $numTotalQuestions ข้อ",
+                  textAlign: TextAlign.center,
+                  softWrap: true,
+                  style: TextStyle(
+                    fontFamily: "prompt",
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ]),
               Text(
-                "คุณตอบถูกทั้งหมด",
+                "คุณได้คะแนนทั้งหมด $totalScore จาก $fullScore",
                 textAlign: TextAlign.center,
-                softWrap: true,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "prompt",
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Config.earthYellowColor,
                 ),
               ),
-              Text(
-                "$numCorrectQuestions ข้อจาก $numTotalQuestions ข้อ",
-                textAlign: TextAlign.center,
-                softWrap: true,
-                style: TextStyle(
-                  fontFamily: "prompt",
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
+              Container(
+                height: 500,
+                child: QuestionSummary(
+                  SummaryData: SummaryData,
+                ),
+              ),
+              OutlinedButton.icon(
+                style: const ButtonStyle(
+                  backgroundColor:
+                      MaterialStatePropertyAll<Color>(Config.earthYellowColor),
+                ),
+                onPressed: onRestart,
+                icon: const Icon(
+                  Icons.refresh,
+                  color: Config.onyxColor,
+                ),
+                label: const Text(
+                  "Restart Quiz",
+                  style:
+                      TextStyle(fontFamily: "prompt", color: Config.onyxColor),
                 ),
               )
-            ]),
-            Text(
-              "คุณได้คะแนนทั้งหมด $totalScore จาก $fullScore",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: "prompt",
-                fontSize: 16,
-                color: Colors.brown.shade400,
-              ),
-            ),
-            Container(
-              height: 500,
-              child: QuestionSummary(
-                SummaryData: SummaryData,
-              ),
-            ),
-            TextButton.icon(
-              onPressed: onRestart,
-              icon: const Icon(Icons.refresh),
-              label: const Text("Restart Quiz"),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

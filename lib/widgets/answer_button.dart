@@ -18,7 +18,7 @@ class AnswerButton extends StatelessWidget {
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
             minimumSize: Size(500, 50),
-            backgroundColor: Config.mainColor1,
+            backgroundColor: Config.earthYellowColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(90),
             )),
@@ -28,7 +28,7 @@ class AnswerButton extends StatelessWidget {
           style: TextStyle(
             fontFamily: "Prompt",
             fontSize: 15,
-            color: Colors.white,
+            color: Config.onyxColor,
           ),
         ),
       ),
