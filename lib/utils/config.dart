@@ -61,4 +61,17 @@ class Config {
   static const antiFlashWhiteColor = Color(0xFFE8E9EB);
   static const alabasterColor = Color(0xFFE0DFD5);
   static const onyxColor = Color(0xFF313638);
+
+  static const fontStyle = "prompt";
+
+  static void Function() toPushPage(BuildContext context, Widget page) => () {
+        {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => page));
+        }
+      };
+
+  static void Function() toPopPage(BuildContext context) => () {
+        Navigator.of(context).pop();
+      };
 }

@@ -1,24 +1,31 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data/question.dart';
-import 'package:flutter_application_1/screens/questionform_screen.dart';
-import 'package:flutter_application_1/screens/questions_screen.dart';
-import 'package:flutter_application_1/screens/result_screen.dart';
-import 'package:flutter_application_1/screens/start_screen.dart';
+import 'package:flutter_application_1/screens/home_screen.dart';
+import 'package:flutter_application_1/screens/student/auth_screen.dart';
+import 'package:flutter_application_1/screens/teacher/questionform_screen.dart';
+import 'package:flutter_application_1/screens/student/questions_screen.dart';
+import 'package:flutter_application_1/screens/student/result_screen.dart';
+import 'package:flutter_application_1/screens/student/student_home_screen.dart';
+import 'package:flutter_application_1/screens/teacher/teacher_home_screen.dart';
+import 'package:flutter_application_1/services/user_service.dart';
+import 'package:flutter_application_1/utils/config.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
-
   @override
   State<Quiz> createState() => _QuizState();
 }
 
 class _QuizState extends State<Quiz> {
-  var _activeScreen = 'start-screen';
+  var _auth = FirebaseAuth.instance;
+  var _activeScreen = 'home-screen';
   List<String> _selectedAnswer = [];
 
-  void _switchScreen() {
+  void _startQuiz() {
     setState(() {
       _activeScreen = 'question-screen';
+      _selectedAnswer.clear();
     });
   }
 
@@ -38,16 +45,12 @@ class _QuizState extends State<Quiz> {
     });
   }
 
-  void _createQuiz() {
-    setState(() {
-      _activeScreen = 'questionform-screen';
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    Widget screenWidget = StartScreen(_switchScreen, _createQuiz);
-
+    Widget screenWidget = StudentHomeScreen(
+      startQuiz: _startQuiz,
+    );
+    
     if (_activeScreen == 'question-screen') {
       screenWidget = QuestionScreen(
         onSelectedAnswer: _chooseAnswer,
@@ -63,17 +66,6 @@ class _QuizState extends State<Quiz> {
       );
     }
 
-    if (_activeScreen == 'questionform-screen') {
-      screenWidget = QuestionFormScreen(
-        onSubmitForm: _restartQuiz,
-      );
-    }
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: screenWidget,
-      ),
-    );
+    return screenWidget;
   }
 }

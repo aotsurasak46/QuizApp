@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "803992600567",
+    "project_id": "quizapp-8160e",
+    "storage_bucket": "quizapp-8160e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803992600567:android:e864205296b0934019f8f2",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803992600567-mvr0g5s2298mtt5uhqaelg8iis4in61d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_application_1",
+            "certificate_hash": "ae24a56aa51c551c666a542eb3035d8678d2202a"
+          }
+        },
+        {
+          "client_id": "803992600567-krec663l3eu974btgd3nesne2nf8tu97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfBBIjS5ekRn9Z1fPfzDxnARK01EQW6uw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "803992600567-krec663l3eu974btgd3nesne2nf8tu97.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/student/auth_screen.dart';
+import 'package:flutter_application_1/screens/student/student_home_screen.dart';
+import 'package:flutter_application_1/screens/teacher/teacher_home_screen.dart';
+import 'package:flutter_application_1/services/firebase_services.dart';
 import 'package:flutter_application_1/utils/config.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class StartScreen extends StatelessWidget {
-  const StartScreen(this.startQuiz, this.switchToForm, {super.key});
-  final void Function() startQuiz;
-  final void Function() switchToForm;
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      
       color: Config.alabasterColor,
       child: Center(
         child: Column(
@@ -26,46 +29,52 @@ class StartScreen extends StatelessWidget {
             const Text(
               'Welcome to Quiz App.',
               style: TextStyle(
-                fontFamily: "promtp",
-                fontSize: 24,
+                  fontFamily: "promtp",
+                  fontSize: 24,
+                  color: Config.onyxColor,
+                  decoration: TextDecoration.none),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Text(
+              "Your Role ?",
+              style: TextStyle(
+                fontSize: 16,
+                decoration: TextDecoration.none,
+                fontFamily: Config.fontStyle,
                 color: Config.onyxColor,
               ),
             ),
             const SizedBox(
-              height: 30,
+              height: 15,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                OutlinedButton.icon(
+                OutlinedButton(
                   style: const ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll<Color>(
                         Config.earthYellowColor),
                   ),
-                  onPressed: startQuiz,
-                  icon: const Icon(
-                    Icons.arrow_right_alt,
-                    color: Config.onyxColor,
-                  ),
-                  label: const Text(
-                    'Start a Quiz.',
+                  onPressed: Config.toPushPage(context, TeacherHomeScreen()),
+                  child: const Text(
+                    'As Teacher',
                     style: TextStyle(
                         fontFamily: "prompt", color: Config.darkerToneColor),
                   ),
                 ),
-                OutlinedButton.icon(
+                SizedBox(
+                  width: 30,
+                ),
+                OutlinedButton(
                   style: const ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll<Color>(
                         Config.earthYellowColor),
                   ),
-                  onPressed: switchToForm,
-                  icon: const FaIcon(
-                    FontAwesomeIcons.plus,
-                    size: 16,
-                    color: Config.darkerToneColor,
-                  ),
-                  label: const Text(
-                    'Create Quiz.',
+                  onPressed: Config.toPushPage(context, AuthScreen()),
+                  child: const Text(
+                    'As Student',
                     style: TextStyle(
                         fontFamily: "prompt", color: Config.onyxColor),
                   ),
